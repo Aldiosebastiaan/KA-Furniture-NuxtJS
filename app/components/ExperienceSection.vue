@@ -1,6 +1,6 @@
 <template>
     <section class="px-6 md:px-16 lg:px-24 py-24">
-        <div class="max-w-7xl mx-auto w-full">
+        <div class="max-w-7xl mx-auto w-full animate-on-scroll">
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
@@ -10,7 +10,7 @@
                     <div class="relative bg-primary rounded-3xl w-full max-w-[400px] aspect-[3.6/4]">
                         <!-- Furniture image overflow -->
                         <img src="/images/nordic-console-table.png" alt="Wooden sideboard furniture"
-                            class="absolute bottom-16 -right-28 w-[85%] object-contain drop-shadow-xl" />
+                            class="absolute bottom-16 -right-20 w-[85%] object-contain drop-shadow-xl" />
                     </div>
                 </div>
 

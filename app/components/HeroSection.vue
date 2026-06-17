@@ -1,6 +1,6 @@
 <template>
-    <section class="flex items-start px-6 md:px-16 lg:px-24 pt-12 pb-20">
-        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section id="home" class="flex items-start px-6 md:px-16 lg:px-24 pt-12 pb-20">
+        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-on-scroll">
 
             <!-- Left Content -->
             <div class="flex flex-col gap-6">

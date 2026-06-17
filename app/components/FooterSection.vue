@@ -1,6 +1,6 @@
 <template>
     <footer class="px-6 md:px-16 lg:px-24 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto w-full">
+        <div class="max-w-7xl mx-auto w-full animate-on-scroll">
 
             <!-- Main Footer -->
             <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 pb-10">
@@ -26,9 +26,9 @@
                 <!-- Right: Nav Links -->
                 <nav class="flex items-center gap-8 lg:pt-2">
 
-                    <a v-for="link in navLinks" :key="link" href="#"
+                    <a v-for="link in navLinks" :key="link.name" :href="link.href"
                         class="text-primary font-medium text-sm hover:text-primary/60 transition-colors duration-200">
-                        {{ link }}
+                        {{ link.name }}
                     </a>
                 </nav>
 
@@ -39,7 +39,7 @@
 
             <!-- Bottom Bar -->
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pt-6">
-                <p class="text-primary/50 text-xs">KA Furniture @2025 ALL Rights Reserved</p>
+                <p class="text-primary/50 text-xs">KA Furniture @2025 All Rights Reserved</p>
 
                 <div class="flex items-center gap-6">
 
@@ -60,7 +60,12 @@ import IconX from '@/components/ui/icons/IconX.vue'
 import IconInstagram from '@/components/ui/icons/IconInstagram.vue'
 import IconFacebook from '@/components/ui/icons/IconFacebook.vue'
 
-const navLinks = ['Home', 'Collection', 'Showcase', 'Services']
+const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'Collection', href: '#collection' },
+    { name: 'Showcase', href: '#showcase' },
+    { name: 'Services', href: '#services' },
+]
 const policies = ['Term & condition', 'Privacy Policy', 'Cookies']
 
 const socials = [
