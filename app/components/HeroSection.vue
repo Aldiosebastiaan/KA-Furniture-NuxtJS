@@ -8,7 +8,7 @@
                     Timeless Furniture for the Modern Minimalist
                 </h1>
 
-                <p class="text-sm md:text-base text-primary/60 max-w-sm leading-relaxed">
+                <p class="text-sm md:text-base text-primary/80 max-w-sm leading-relaxed">
                     An interior design concept that prioritizes beautiful, functional, durable and timeless furniture to
                     create modern and minimalist spaces.
                 </p>
