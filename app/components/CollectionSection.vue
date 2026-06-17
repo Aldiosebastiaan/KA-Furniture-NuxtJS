@@ -1,6 +1,6 @@
 <template>
-    <section class="px-6 md:px-16 lg:px-24 py-20">
-        <div class="max-w-7xl mx-auto w-full">
+    <section id="collection" class="px-6 md:px-16 lg:px-24 py-20">
+        <div class="max-w-7xl mx-auto w-full animate-on-scroll">
 
             <!-- Header -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
