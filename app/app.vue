@@ -3,6 +3,6 @@
     <Navbar />
     <HeroSection />
     <CollectionSection />
-    <ExperinceSection />
+    <ExperienceSection />
   </div>
 </template>

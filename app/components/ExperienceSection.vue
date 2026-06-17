@@ -11,7 +11,7 @@
 
                     <!-- Furniture image overflow -->
                     <img src="/images/nordic-console-table.png" alt="Wooden sideboard furniture"
-                        class="absolute bottom-12 -right-4 w-[70%] object-contain drop-shadow-xl" />
+                        class="absolute bottom-6 -right-4 w-[70%] object-contain drop-shadow-xl" />
                 </div>
 
                 <!-- Right: Text Content -->
