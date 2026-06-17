@@ -5,5 +5,6 @@
     <CollectionSection />
     <ExperienceSection />
     <ShowcaseSection />
+    <BannerSection />
   </div>
 </template>
