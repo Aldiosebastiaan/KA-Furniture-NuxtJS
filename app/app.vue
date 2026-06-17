@@ -6,5 +6,6 @@
     <ExperienceSection />
     <ShowcaseSection />
     <BannerSection />
+    <FooterSection />
   </div>
 </template>
