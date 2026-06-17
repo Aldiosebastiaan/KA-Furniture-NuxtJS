@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #345230;
+    --color-secondary: #FFFAE6;
+    --color-accent: #FAC876;
+    --color-muted: #E8E2C8;
+  }
+
+  body {
+    @apply bg-secondary text-primary font-sans;
+  }
+}
