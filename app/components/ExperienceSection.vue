@@ -7,11 +7,11 @@
                 <!-- Left: Image Card -->
                 <div class="relative flex items-end">
                     <!-- Green background card -->
-                    <div class="bg-primary rounded-3xl w-[400px] aspect-[3.6/4]" />
-
-                    <!-- Furniture image overflow -->
-                    <img src="/images/nordic-console-table.png" alt="Wooden sideboard furniture"
-                        class="absolute bottom-6 -right-4 w-[70%] object-contain drop-shadow-xl" />
+                    <div class="relative bg-primary rounded-3xl w-full max-w-[400px] aspect-[3.6/4]">
+                        <!-- Furniture image overflow -->
+                        <img src="/images/nordic-console-table.png" alt="Wooden sideboard furniture"
+                            class="absolute bottom-16 -right-28 w-[85%] object-contain drop-shadow-xl" />
+                    </div>
                 </div>
 
                 <!-- Right: Text Content -->
