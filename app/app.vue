@@ -4,5 +4,6 @@
     <HeroSection />
     <CollectionSection />
     <ExperienceSection />
+    <ShowcaseSection />
   </div>
 </template>
