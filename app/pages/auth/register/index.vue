@@ -15,15 +15,6 @@
 
     <!-- Right Form Panel -->
     <div class="w-full lg:w-1/2 flex items-center justify-center p-8 sm:p-16 relative">
-      <NuxtLink to="/"
-        class="absolute top-8 right-8 text-primary/60 hover:text-primary transition-colors flex items-center gap-2 text-sm font-medium">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-          class="w-4 h-4">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-        </svg>
-        Back
-      </NuxtLink>
-
       <div class="w-full max-w-md flex flex-col gap-6">
 
         <div class="flex flex-col gap-2 text-center lg:text-left">
@@ -87,7 +78,7 @@
 
         <p class="text-center text-sm text-primary/70">
           Already have an account?
-          <NuxtLink to="/auth/login/index" class="text-primary font-semibold hover:text-accent transition-colors">Sign
+          <NuxtLink to="/auth/login" class="text-primary font-semibold hover:text-accent transition-colors">Sign
             in</NuxtLink>
         </p>
 
