@@ -14,8 +14,8 @@
                 </p>
 
                 <div class="flex items-center gap-4 mt-2">
-                    <UiButton variant="accent">Buy Now</UiButton>
-                    <UiButton variant="outline">Show Products</UiButton>
+                    <UiButton variant="accent" to="/shop">Shop Now</UiButton>
+                    <UiButton variant="outline" to="#collection">Explore Collection</UiButton>
                 </div>
             </div>
 

@@ -7,4 +7,12 @@ export default defineNuxtConfig({
     configPath: '~/tailwind.config.ts',
     cssPath: '~/assets/css/main.css',
   },
+  vite: {
+    optimizeDeps: {
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+      ]
+    }
+  }
 })
