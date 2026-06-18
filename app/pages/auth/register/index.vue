@@ -87,7 +87,7 @@
 
         <p class="text-center text-sm text-primary/70">
           Already have an account?
-          <NuxtLink to="/auth/login/login" class="text-primary font-semibold hover:text-accent transition-colors">Sign
+          <NuxtLink to="/auth/login/index" class="text-primary font-semibold hover:text-accent transition-colors">Sign
             in</NuxtLink>
         </p>
 
