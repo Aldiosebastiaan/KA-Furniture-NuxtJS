@@ -30,11 +30,11 @@
         </div>
       </template>
       <template v-else>
-        <NuxtLink to="/auth/register/register"
+        <NuxtLink to="/auth/register/index"
           class="bg-[#FFFAE6] text-primary border border-primary px-6 py-2 rounded-full font-medium text-sm hover:bg-primary/5 transition-colors inline-block">
           Daftar
         </NuxtLink>
-        <NuxtLink to="/auth/login/login"
+        <NuxtLink to="/auth/login/index"
           class="bg-primary text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-primary/90 transition-colors inline-block">
           Masuk
         </NuxtLink>
@@ -76,12 +76,12 @@
           </button>
         </template>
         <template v-else>
-          <NuxtLink to="/auth/register/register"
+          <NuxtLink to="/auth/register/index"
             class="w-full text-center bg-[#FFFAE6] text-primary border border-primary px-6 py-3 rounded-full font-medium text-sm inline-block"
             @click="isMenuOpen = false">
             Daftar
           </NuxtLink>
-          <NuxtLink to="/auth/login/login"
+          <NuxtLink to="/auth/login/index"
             class="w-full text-center bg-primary text-white px-6 py-3 rounded-full font-medium text-sm inline-block"
             @click="isMenuOpen = false">
             Masuk
