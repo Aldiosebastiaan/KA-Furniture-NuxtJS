@@ -157,8 +157,8 @@
           </NuxtLink>
         </template>
       </div>
-</div>
-</nav>
+    </div>
+  </nav>
 </template>
 
 <script setup>
