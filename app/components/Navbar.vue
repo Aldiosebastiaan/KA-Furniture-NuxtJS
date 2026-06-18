@@ -86,7 +86,7 @@
         <NuxtLink to="/auth/login"
           class="bg-primary text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-primary/90 transition-colors inline-block">
           Masuk
-          </button>
+        </NuxtLink>
       </template>
     </div>
 
@@ -128,36 +128,35 @@
       </ul>
       <div class="flex flex-col gap-4 mt-2">
         <template v-if="isLoggedIn">
-          <<<<<<< Updated upstream=======<div class="text-primary font-medium text-sm text-center py-2">
+          <div class="text-primary font-medium text-sm text-center py-2">
             Hi, {{ user?.name }}
+          </div>
+          <NuxtLink to="/cart"
+            class="w-full text-center bg-[#FFFAE6] text-primary border border-primary px-6 py-3 rounded-full font-medium text-sm flex items-center justify-center gap-2"
+            @click="isMenuOpen = false">
+            Cart
+            <span v-if="cartTotalItems > 0" class="bg-primary text-white rounded-full px-2 py-0.5 text-xs">
+              {{ cartTotalItems }}
+            </span>
+          </NuxtLink>
+          <button class="w-full text-primary border border-primary px-6 py-3 rounded-full font-medium text-sm"
+            @click="logout(); isMenuOpen = false">
+            Logout
+          </button>
+        </template>
+        <template v-else>
+          <NuxtLink to="/auth/register"
+            class="w-full text-center bg-[#FFFAE6] text-primary border border-primary px-6 py-3 rounded-full font-medium text-sm inline-block"
+            @click="isMenuOpen = false">
+            Daftar
+          </NuxtLink>
+          <NuxtLink to="/auth/login"
+            class="w-full text-center bg-primary text-white px-6 py-3 rounded-full font-medium text-sm inline-block"
+            @click="isMenuOpen = false">
+            Masuk
+          </NuxtLink>
+        </template>
       </div>
-      <NuxtLink to="/cart"
-        class="w-full text-center bg-[#FFFAE6] text-primary border border-primary px-6 py-3 rounded-full font-medium text-sm flex items-center justify-center gap-2"
-        @click="isMenuOpen = false">
-        Cart
-        <span v-if="cartTotalItems > 0" class="bg-primary text-white rounded-full px-2 py-0.5 text-xs">
-          {{ cartTotalItems }}
-        </span>
-      </NuxtLink>
-      >>>>>>> Stashed changes
-      <button class="w-full text-primary border border-primary px-6 py-3 rounded-full font-medium text-sm"
-        @click="isLoggedIn = false; isMenuOpen = false">
-        Logout
-      </button>
-</template>
-<template v-else>
-  <NuxtLink to="/auth/register"
-    class="w-full text-center bg-[#FFFAE6] text-primary border border-primary px-6 py-3 rounded-full font-medium text-sm inline-block"
-    @click="isMenuOpen = false">
-    Daftar
-  </NuxtLink>
-  <NuxtLink to="/auth/login"
-    class="w-full text-center bg-primary text-white px-6 py-3 rounded-full font-medium text-sm inline-block"
-    @click="isMenuOpen = false">
-    Masuk
-    </button>
-</template>
-</div>
 </div>
 </nav>
 </template>
