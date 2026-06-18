@@ -17,26 +17,27 @@
     <!-- Desktop Auth Section -->
     <div class="hidden md:flex items-center gap-x-4">
       <template v-if="isLoggedIn">
-        <button class="text-primary p-2 rounded-full hover:bg-primary/10 transition-colors" @click="isLoggedIn = false"
-          title="Logout">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-          </svg>
-        </button>
+        <div class="flex items-center gap-3">
+          <span class="text-primary font-medium text-sm hidden lg:block">Hi, {{ user?.name }}</span>
+          <button class="text-primary p-2 rounded-full hover:bg-primary/10 transition-colors" @click="logout()"
+            title="Logout">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            </svg>
+          </button>
+        </div>
       </template>
       <template v-else>
-        <button
-          class="bg-[#FFFAE6] text-primary border border-primary px-6 py-2 rounded-full font-medium text-sm hover:bg-primary/5 transition-colors"
-          @click="isLoggedIn = true">
+        <NuxtLink to="/auth/register/register"
+          class="bg-[#FFFAE6] text-primary border border-primary px-6 py-2 rounded-full font-medium text-sm hover:bg-primary/5 transition-colors inline-block">
           Daftar
-        </button>
-        <button
-          class="bg-primary text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-primary/90 transition-colors"
-          @click="isLoggedIn = true">
+        </NuxtLink>
+        <NuxtLink to="/auth/login/login"
+          class="bg-primary text-white px-6 py-2 rounded-full font-medium text-sm hover:bg-primary/90 transition-colors inline-block">
           Masuk
-        </button>
+        </NuxtLink>
       </template>
     </div>
 
@@ -66,21 +67,25 @@
       </ul>
       <div class="flex flex-col gap-4 mt-2">
         <template v-if="isLoggedIn">
+          <div class="text-primary font-medium text-sm text-center py-2">
+            Hi, {{ user?.name }}
+          </div>
           <button class="w-full text-primary border border-primary px-6 py-3 rounded-full font-medium text-sm"
-            @click="isLoggedIn = false; isMenuOpen = false">
+            @click="logout(); isMenuOpen = false">
             Logout
           </button>
         </template>
         <template v-else>
-          <button
-            class="w-full bg-[#FFFAE6] text-primary border border-primary px-6 py-3 rounded-full font-medium text-sm"
-            @click="isLoggedIn = true; isMenuOpen = false">
+          <NuxtLink to="/auth/register/register"
+            class="w-full text-center bg-[#FFFAE6] text-primary border border-primary px-6 py-3 rounded-full font-medium text-sm inline-block"
+            @click="isMenuOpen = false">
             Daftar
-          </button>
-          <button class="w-full bg-primary text-white px-6 py-3 rounded-full font-medium text-sm"
-            @click="isLoggedIn = true; isMenuOpen = false">
+          </NuxtLink>
+          <NuxtLink to="/auth/login/login"
+            class="w-full text-center bg-primary text-white px-6 py-3 rounded-full font-medium text-sm inline-block"
+            @click="isMenuOpen = false">
             Masuk
-          </button>
+          </NuxtLink>
         </template>
       </div>
     </div>
@@ -89,7 +94,8 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useAuth } from '~/composables/useAuth'
 
-const isLoggedIn = ref(false)
+const { isLoggedIn, user, logout } = useAuth()
 const isMenuOpen = ref(false)
 </script>
