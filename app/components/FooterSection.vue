@@ -24,7 +24,7 @@
                 </div>
 
                 <!-- Right: Nav Links -->
-                <nav class="flex items-center gap-8 lg:pt-2">
+                <nav class="flex flex-wrap items-center gap-4 md:gap-8 lg:pt-2">
 
                     <a v-for="link in navLinks" :key="link.name" :href="link.href"
                         class="text-primary font-medium text-sm hover:text-primary/60 transition-colors duration-200">
@@ -41,7 +41,7 @@
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pt-6">
                 <p class="text-primary/50 text-xs">KA Furniture @2025 All Rights Reserved</p>
 
-                <div class="flex items-center gap-6">
+                <div class="flex flex-wrap items-center gap-4 md:gap-6">
 
                     <a v-for="policy in policies" :key="policy" href="#"
                         class="text-primary/60 text-xs hover:text-primary transition-colors duration-200">
