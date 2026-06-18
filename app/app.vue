@@ -5,6 +5,7 @@
       <NuxtPage />
     </div>
     <FooterSection />
+    <CartModal />
   </div>
 </template>
 
