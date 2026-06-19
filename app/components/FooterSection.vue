@@ -1,6 +1,6 @@
 <template>
     <footer class="px-6 md:px-16 lg:px-24 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto w-full animate-on-scroll">
+        <div class="max-w-7xl mx-auto w-full">
 
             <!-- Main Footer -->
             <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 pb-10">
