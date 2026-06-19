@@ -61,7 +61,7 @@
               <path d="m21 21-4.35-4.35" />
             </svg>
             <input v-model="searchQuery" type="text" placeholder="Search furniture..."
-              class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-primary/15 bg-transparent text-primary text-sm placeholder:text-primary/30 focus:outline-none focus:border-primary/40 transition-colors" />
+              class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-primary/15 bg-transparent text-primary text-sm placeholder:text-primary/30 focus:outline-none hover:border-primary/40 hover:ring-1 hover:ring-primary/40 focus:border-primary/60 focus:ring-1 focus:ring-primary/60 transition-colors" />
           </div>
 
           <!-- Price Range -->
@@ -81,7 +81,7 @@
           <div>
             <p class="text-primary font-semibold text-sm mb-4">Minimum Rating</p>
             <div class="flex flex-col gap-2">
-              <label v-for="r in [5, 4, 3]" :key="r" class="flex items-center gap-2 cursor-pointer group">
+              <label v-for="r in [4, 3]" :key="r" class="flex items-center gap-2 cursor-pointer group">
                 <input type="radio" :value="r" v-model="minRating" class="accent-primary" />
                 <span class="text-sm text-primary/70 group-hover:text-primary transition-colors">
                   {{ '⭐'.repeat(r) }} ke atas
@@ -135,13 +135,18 @@
                     :style="{ animationDelay: `${i * 60}ms` }">
                     <!-- Image Card -->
                     <div class="relative bg-primary rounded-2xl overflow-hidden flex items-center justify-center"
-                      style="height: 220px;">
-                      <span
-                        class="absolute top-3 right-3 bg-accent text-primary text-xs font-semibold px-3 py-1 rounded-full z-10">
+                      style="height: 290px;">
+                      <button @click="addToCart(product)"
+                        class="absolute top-3 right-3 bg-accent text-primary text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-1.5 hover:brightness-95 transition-all opacity-0 group-hover:opacity-100 md:opacity-100 z-10 shadow-sm cursor-pointer">
                         Simpan
-                      </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                          stroke="currentColor" class="w-3.5 h-3.5">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                        </svg>
+                      </button>
                       <img :src="product.image" :alt="product.name"
-                        class="w-4/5 h-4/5 object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-105" />
+                        class="w-3/5 h-3/5 object-contain drop-shadow-lg transition-transform duration-300 group-hover:scale-105" />
                     </div>
 
                     <!-- Info -->
@@ -192,7 +197,7 @@ const activeSlide = ref(0)
 const promoSlides = [
   {
     id: 1,
-    image: '/images/promo/promo-1.jpg',
+    image: '/images/promo/promo-1.png',
     tag: 'Special Offer',
     title: 'Up to 40% Off Selected Items',
     desc: 'Limited time offer on our premium furniture collection.',
@@ -201,7 +206,7 @@ const promoSlides = [
   },
   {
     id: 2,
-    image: '/images/promo/promo-2.jpg',
+    image: '/images/promo/promo-2.png',
     tag: 'New Arrival',
     title: 'Discover Our Latest Collection',
     desc: 'Fresh designs crafted with the finest materials.',
@@ -210,7 +215,7 @@ const promoSlides = [
   },
   {
     id: 3,
-    image: '/images/promo/promo-3.jpg',
+    image: '/images/promo/promo-3.png',
     tag: 'Free Shipping',
     title: 'Free Delivery for Orders Over 2 Juta',
     desc: 'Enjoy free shipping across all major cities in Indonesia.',
@@ -233,7 +238,7 @@ function prevSlide() {
 }
 
 // ── Categories ─────────────────────────────────────────────────
-const categories = ['For You', 'Chair', 'Bed', 'Table', 'Kitchen Set', 'Shelves']
+const categories = ['For You', 'Chair', 'Bed', 'Table', 'Kitchen Set', 'Shelves', 'Nightstand']
 const activeCategory = ref('For You')
 
 // ── Filters ────────────────────────────────────────────────────
@@ -244,52 +249,61 @@ const minRating = ref(0)
 // ── Products data ──────────────────────────────────────────────
 const allProducts = {
   'For You': [
-    { id: 1, name: 'Armchair Boucle', price: 4200000, rating: 4.8, sold: 128, image: '/images/products/armchair.png' },
-    { id: 2, name: 'Nesting Coffee Table', price: 3100000, rating: 4.6, sold: 85, image: '/images/products/coffee-table.png' },
-    { id: 3, name: 'Lounge Chair', price: 5800000, rating: 4.9, sold: 210, image: '/images/products/lounge-chair.png' },
-    { id: 4, name: 'Nightstand Oak', price: 1900000, rating: 4.5, sold: 67, image: '/images/products/nightstand.png' },
-    { id: 5, name: 'Sideboard Teak', price: 8500000, rating: 4.7, sold: 43, image: '/images/products/sideboard.png' },
-    { id: 6, name: 'Accent Chair Rattan', price: 3400000, rating: 4.4, sold: 91, image: '/images/products/accent-chair.png' },
+    { id: 1, name: 'Wall Shelving Unit', price: 4200000, rating: 4.5, sold: 76, image: '/images/shelves/wall-shelf.png' },
+    { id: 2, name: 'Twin Nest Coffee Table', price: 3100000, rating: 4.6, sold: 85, image: '/images/table/twin-nest-coffee-table.png' },
+    { id: 3, name: 'Cocoon Lounge Chair', price: 5800000, rating: 4.9, sold: 210, image: '/images/chair/cocoon-lounge-chair.png' },
+    { id: 4, name: 'Nightstand Oak', price: 1900000, rating: 4.5, sold: 67, image: '/images/nightstand/nightstand-oak.png' },
+    { id: 5, name: 'Side Table', price: 1800000, rating: 4.4, sold: 118, image: '/images/table/side-table.png' },
+    { id: 6, name: 'Accent Chair', price: 3400000, rating: 4.4, sold: 91, image: '/images/chair/accent-chair.png' },
   ],
   'Chair': [
-    { id: 7, name: 'Accent Chair', price: 3400000, rating: 4.4, sold: 91, image: '/images/products/accent-chair.png' },
-    { id: 8, name: 'Rocking Chair', price: 2800000, rating: 4.6, sold: 54, image: '/images/products/rocking-chair.png' },
-    { id: 9, name: 'Bar Stool', price: 1500000, rating: 4.3, sold: 113, image: '/images/products/bar-stool.png' },
-    { id: 10, name: 'Dining Chair', price: 1200000, rating: 4.5, sold: 200, image: '/images/products/dining-chair.png' },
-    { id: 11, name: 'Armchair Boucle', price: 4200000, rating: 4.8, sold: 128, image: '/images/products/armchair.png' },
-    { id: 12, name: 'Lounge Chair', price: 5800000, rating: 4.9, sold: 210, image: '/images/products/lounge-chair.png' },
+    { id: 7, name: 'Accent Chair', price: 3400000, rating: 4.4, sold: 91, image: '/images/chair/accent-chair.png' },
+    { id: 8, name: 'Rocking Chair', price: 2800000, rating: 4.6, sold: 54, image: '/images/chair/rocking-chair.png' },
+    { id: 9, name: 'Bar Stool', price: 1500000, rating: 4.3, sold: 113, image: '/images/chair/bar-stool-chair.png' },
+    { id: 10, name: 'Malaga Dining Chair', price: 1600000, rating: 4.5, sold: 160, image: '/images/chair/malaga-dining-chair.png' },
+    { id: 11, name: 'Glenda Dining Chair', price: 1300000, rating: 4.6, sold: 178, image: '/images/chair/glenda-dining-chair.png' },
+    { id: 12, name: 'The Lamb Lounge Chair', price: 5800000, rating: 4.9, sold: 210, image: '/images/chair/lamb-lounge-chair.png' },
+    { id: 13, name: 'Nuvola Dining Chair', price: 1200000, rating: 4.5, sold: 200, image: '/images/chair/nuvola-dining-chair.png' },
+    { id: 14, name: 'Cocoon Lounge Chair', price: 4800000, rating: 4.8, sold: 221, image: '/images/chair/cocoon-lounge-chair.png' },
+    { id: 15, name: 'Vanity Dining Chair', price: 1400000, rating: 4.7, sold: 189, image: '/images/chair/vanity-dining-chair.png' },
   ],
   'Bed': [
-    { id: 13, name: 'Platform Bed', price: 12000000, rating: 4.7, sold: 38, image: '/images/products/platform-bed.png' },
-    { id: 14, name: 'Canopy Bed', price: 18500000, rating: 4.9, sold: 21, image: '/images/products/canopy-bed.png' },
-    { id: 15, name: 'Storage Bed', price: 9800000, rating: 4.5, sold: 55, image: '/images/products/storage-bed.png' },
-    { id: 16, name: 'Daybed', price: 6200000, rating: 4.4, sold: 47, image: '/images/products/daybed.png' },
-    { id: 17, name: 'Bunk Bed', price: 7500000, rating: 4.3, sold: 62, image: '/images/products/bunk-bed.png' },
-    { id: 18, name: 'Bedside Table', price: 1800000, rating: 4.6, sold: 145, image: '/images/products/nightstand.png' },
+    { id: 16, name: 'Pandora Ottoman Bed', price: 12000000, rating: 4.7, sold: 38, image: '/images/bed/pandora-ottoman-bed.png' },
+    { id: 14, name: 'Canopy Bed', price: 18500000, rating: 4.9, sold: 21, image: '/images/bed/canopy-bed.png' },
+    { id: 15, name: 'Storage Bed', price: 9800000, rating: 4.5, sold: 55, image: '/images/bed/storage-bed.png' },
+    { id: 16, name: 'Daybed', price: 6200000, rating: 4.4, sold: 47, image: '/images/bed/daybed.png' },
+    { id: 17, name: 'Orthopedic Posture Master Bamboo', price: 7500000, rating: 4.3, sold: 62, image: '/images/bed/orthopedic-posture-master-bamboo.png' },
+    { id: 18, name: 'Calley Bedside Table', price: 10200000, rating: 4.6, sold: 145, image: '/images/bed/calley-bedside-table.png' },
   ],
   'Table': [
-    { id: 19, name: 'Nesting Coffee Table', price: 3100000, rating: 4.6, sold: 85, image: '/images/products/coffee-table.png' },
-    { id: 20, name: 'Dining Table', price: 7200000, rating: 4.7, sold: 72, image: '/images/products/dining-table.png' },
-    { id: 21, name: 'Side Table', price: 1400000, rating: 4.4, sold: 118, image: '/images/products/side-table.png' },
-    { id: 22, name: 'Console Table', price: 4500000, rating: 4.5, sold: 44, image: '/images/products/console-table.png' },
-    { id: 23, name: 'Study Desk', price: 3800000, rating: 4.6, sold: 99, image: '/images/products/study-desk.png' },
-    { id: 24, name: 'Outdoor Table', price: 2900000, rating: 4.3, sold: 33, image: '/images/products/outdoor-table.png' },
+    { id: 19, name: 'Twin Nest Coffee Table', price: 3100000, rating: 4.6, sold: 85, image: '/images/table/twin-nest-coffee-table.png' },
+    { id: 20, name: 'Dining Table', price: 7200000, rating: 4.7, sold: 72, image: '/images/table/dining-table.png' },
+    { id: 21, name: 'Side Table', price: 1800000, rating: 4.4, sold: 118, image: '/images/table/side-table.png' },
+    { id: 22, name: 'Nordic Console Table', price: 4500000, rating: 4.5, sold: 44, image: '/images/table/nordic-console-table.png' },
+    { id: 23, name: 'Study Desk', price: 3800000, rating: 4.6, sold: 99, image: '/images/table/study-desk.png' },
+    { id: 24, name: 'Outdoor Table', price: 2900000, rating: 4.3, sold: 33, image: '/images/table/outdoor-table.png' },
   ],
   'Kitchen Set': [
-    { id: 25, name: 'Kitchen Island', price: 15000000, rating: 4.8, sold: 19, image: '/images/products/kitchen-island.png' },
-    { id: 26, name: 'Bar Cabinet', price: 6800000, rating: 4.5, sold: 37, image: '/images/products/bar-cabinet.png' },
-    { id: 27, name: 'Kitchen Stool', price: 1600000, rating: 4.4, sold: 88, image: '/images/products/kitchen-stool.png' },
-    { id: 28, name: 'Wine Rack', price: 2200000, rating: 4.3, sold: 56, image: '/images/products/wine-rack.png' },
-    { id: 29, name: 'Buffet Cabinet', price: 8900000, rating: 4.7, sold: 28, image: '/images/products/buffet-cabinet.png' },
-    { id: 30, name: 'Kitchen Cart', price: 3300000, rating: 4.5, sold: 74, image: '/images/products/kitchen-cart.png' },
+    { id: 25, name: 'Kitchen Island', price: 18000000, rating: 4.8, sold: 19, image: '/images/kitchen-set/kitchen-island.png' },
+    { id: 26, name: 'Bar Cabinet', price: 20000000, rating: 4.5, sold: 37, image: '/images/kitchen-set/bar-cabinet.png' },
+    { id: 27, name: 'Kitchen Stool', price: 15200000, rating: 4.4, sold: 88, image: '/images/kitchen-set/kitchen-stool.png' },
+    { id: 28, name: 'Wine Rack', price: 14200000, rating: 4.3, sold: 56, image: '/images/kitchen-set/wine-rack.png' },
+    { id: 29, name: 'White Shaker Cabinet', price: 22900000, rating: 4.7, sold: 28, image: '/images/kitchen-set/white-shaker-cabinets.png' },
+    { id: 30, name: 'White Drew Cabinet', price: 17300000, rating: 4.5, sold: 74, image: '/images/kitchen-set/white-drew-cabinet.png' },
   ],
   'Shelves': [
-    { id: 31, name: 'Floating Shelf', price: 850000, rating: 4.5, sold: 234, image: '/images/products/floating-shelf.png' },
-    { id: 32, name: 'Bookcase', price: 4100000, rating: 4.6, sold: 107, image: '/images/products/bookcase.png' },
-    { id: 33, name: 'Corner Shelf', price: 1200000, rating: 4.4, sold: 89, image: '/images/products/corner-shelf.png' },
-    { id: 34, name: 'Display Cabinet', price: 5600000, rating: 4.7, sold: 52, image: '/images/products/display-cabinet.png' },
-    { id: 35, name: 'Wall Shelving Unit', price: 3200000, rating: 4.5, sold: 76, image: '/images/products/wall-shelf.png' },
-    { id: 36, name: 'Ladder Shelf', price: 1900000, rating: 4.3, sold: 93, image: '/images/products/ladder-shelf.png' },
+    { id: 31, name: 'Floating Shelf', price: 1050000, rating: 4.5, sold: 234, image: '/images/shelves/floating-shelf.png' },
+    { id: 32, name: 'Bookcase', price: 2100000, rating: 4.6, sold: 107, image: '/images/shelves/bookcase.png' },
+    { id: 33, name: 'Corner Shelf', price: 1200000, rating: 4.4, sold: 89, image: '/images/shelves/corner-shelf.png' },
+    { id: 34, name: 'Display Cabinet', price: 3600000, rating: 4.7, sold: 52, image: '/images/shelves/display-cabinet.png' },
+    { id: 35, name: 'Wall Shelving Unit', price: 4200000, rating: 4.5, sold: 76, image: '/images/shelves/wall-shelf.png' },
+    { id: 36, name: 'Ladder Shelf', price: 1400000, rating: 4.3, sold: 93, image: '/images/shelves/ladder-shelf.png' },
+  ],
+  'Nightstand': [
+    { id: 37, name: 'Nightstand Oak', price: 1900000, rating: 4.5, sold: 67, image: '/images/nightstand/nightstand-oak.png' },
+    { id: 38, name: 'Nightstand Pine', price: 1700000, rating: 4.4, sold: 45, image: '/images/nightstand/nightstand-pine.png' },
+    { id: 39, name: 'Nightstand Teak', price: 2100000, rating: 4.7, sold: 89, image: '/images/nightstand/nightstand-teak.png' },
+    { id: 40, name: 'Nightstand Walnut', price: 2300000, rating: 4.8, sold: 112, image: '/images/nightstand/nightstand-walnut.png' },
   ],
 }
 

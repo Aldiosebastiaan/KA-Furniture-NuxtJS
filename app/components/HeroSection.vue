@@ -21,7 +21,7 @@
 
             <!-- Right Image -->
             <div class="relative w-full aspect-[4/3] lg:aspect-square">
-                <img src="/images/hero-room.png" alt="Modern minimalist living room"
+                <img src="/images/section/hero-room.png" alt="Modern minimalist living room"
                     class="w-full h-full object-cover rounded-3xl" />
             </div>
 

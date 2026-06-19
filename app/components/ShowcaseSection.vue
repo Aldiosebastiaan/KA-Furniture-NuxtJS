@@ -22,32 +22,32 @@
 
                 <!-- 1 -->
                 <div class="gallery-item area-1">
-                    <img src="/images/showcase-1.png" alt="Chair in garden" />
+                    <img src="/images/showcase/showcase-1.png" alt="Chair in garden" />
                 </div>
 
                 <!-- 2 -->
                 <div class="gallery-item area-2">
-                    <img src="/images/showcase-2.png" alt="Bookshelf" />
+                    <img src="/images/showcase/showcase-2.png" alt="Bookshelf" />
                 </div>
 
                 <!-- 3 -->
                 <div class="gallery-item area-3">
-                    <img src="/images/showcase-3.png" alt="Interior" />
+                    <img src="/images/showcase/showcase-3.png" alt="Interior" />
                 </div>
 
                 <!-- 5 -->
                 <div class="gallery-item area-5">
-                    <img src="/images/showcase-5.png" alt="Wood Shelf" />
+                    <img src="/images/showcase/showcase-5.png" alt="Wood Shelf" />
                 </div>
 
                 <!-- 4 -->
                 <div class="gallery-item area-4">
-                    <img src="/images/showcase-4.png" alt="Chair Hill" />
+                    <img src="/images/showcase/showcase-4.png" alt="Chair Hill" />
                 </div>
 
                 <!-- 6 -->
                 <div class="gallery-item area-6">
-                    <img src="/images/showcase-6.png" alt="Living Room" />
+                    <img src="/images/showcase/showcase-6.png" alt="Living Room" />
                 </div>
 
             </div>
