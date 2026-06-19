@@ -48,7 +48,7 @@
 
     <!-- Main Content -->
     <section class="px-6 md:px-16 lg:px-24 pb-20">
-      <div class="max-w-7xl mx-auto flex gap-8">
+      <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
 
         <!-- LEFT SIDEBAR -->
         <aside class="w-64 shrink-0 flex flex-col gap-8">
@@ -137,7 +137,7 @@
                     <div class="relative bg-primary rounded-2xl overflow-hidden flex items-center justify-center"
                       style="height: 290px;">
                       <button @click="addToCart(product)"
-                        class="absolute top-3 right-3 bg-accent text-primary text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-1.5 hover:brightness-95 transition-all opacity-0 group-hover:opacity-100 md:opacity-100 z-10 shadow-sm cursor-pointer">
+                        class="absolute top-3 right-3 bg-accent text-primary text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-1.5 hover:brightness-95 transition-all opacity-100 z-10 shadow-sm cursor-pointer">
                         Simpan
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                           stroke="currentColor" class="w-3.5 h-3.5">
