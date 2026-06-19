@@ -38,8 +38,8 @@
             </svg>
           </button>
           <div class="relative group">
-            <NuxtLink to="/cart"
-              class="relative flex text-primary p-2 rounded-full hover:bg-primary/10 transition-colors" title="Cart">
+            <NuxtLink to="/cart" id="cart-icon"
+              :class="['relative flex text-primary p-2 rounded-full hover:bg-primary/10 transition-all duration-300', { 'scale-125 text-accent': isCartBumping }]" title="Cart">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -167,6 +167,6 @@ import { useAuth } from '~/composables/useAuth'
 import { useCart } from '~/composables/useCart'
 
 const { isLoggedIn, user, logout } = useAuth()
-const { cartItems, cartTotalItems } = useCart()
+const { cartItems, cartTotalItems, isCartBumping } = useCart()
 const isMenuOpen = ref(false)
 </script>

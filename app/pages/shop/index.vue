@@ -51,7 +51,7 @@
       <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
 
         <!-- LEFT SIDEBAR -->
-        <aside class="w-64 shrink-0 flex flex-col gap-8">
+        <aside class="w-full lg:w-64 shrink-0 flex flex-col gap-8">
 
           <!-- Search -->
           <div class="relative">
@@ -136,7 +136,7 @@
                     <!-- Image Card -->
                     <div class="relative bg-primary rounded-2xl overflow-hidden flex items-center justify-center"
                       style="height: 290px;">
-                      <button @click="addToCart(product)"
+                      <button @click="addToCart(product, $event)"
                         class="absolute top-3 right-3 bg-accent text-primary text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-1.5 hover:brightness-95 transition-all opacity-100 z-10 shadow-sm cursor-pointer">
                         Simpan
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -183,6 +183,9 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
+import { useCart } from '~/composables/useCart'
+
+const { addToCart } = useCart()
 
 // ── Page entrance ──────────────────────────────────────────────
 const pageReady = ref(false)
