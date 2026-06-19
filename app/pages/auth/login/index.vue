@@ -2,7 +2,7 @@
   <div class="flex items-stretch bg-secondary w-full" style="min-height: calc(100vh - 80px)">
     <!-- Left Image Panel (Hidden on Mobile) -->
     <div class="hidden lg:flex w-1/2 relative bg-primary items-center justify-center overflow-hidden">
-      <img src="/images/hero-room.png" alt="Elegant Furniture"
+      <img src="/images/section/hero-room.png" alt="Elegant Furniture"
         class="absolute inset-0 w-full h-full object-cover opacity-80" />
       <div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-primary/20"></div>
       <div class="relative z-10 p-16 flex flex-col justify-end h-full w-full text-[#FFFAE6]">
