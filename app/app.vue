@@ -6,6 +6,7 @@
     </div>
     <FooterSection />
     <CartModal />
+    <CartAnimation />
   </div>
 </template>
 

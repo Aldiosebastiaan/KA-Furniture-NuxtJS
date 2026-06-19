@@ -30,8 +30,8 @@
                             <div class="relative bg-primary rounded-2xl overflow-hidden flex items-center justify-center group"
                                 style="width: 100%; height: 290px;">
                                 <!-- Badge Simpan -->
-                                <button @click="addToCart(product)"
-                                    class="absolute top-3 right-3 bg-accent text-primary text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-1.5 hover:brightness-95 transition-all opacity-0 group-hover:opacity-100 md:opacity-100 z-10 shadow-sm cursor-pointer">
+                                <button @click="addToCart(product, $event)"
+                                    class="absolute top-3 right-3 bg-accent text-primary text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-1.5 hover:brightness-95 transition-all opacity-100 z-10 shadow-sm cursor-pointer">
                                     Simpan
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
