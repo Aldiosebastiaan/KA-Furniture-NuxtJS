@@ -28,7 +28,7 @@
                             <div class="flex-shrink-0">
                                 <input type="checkbox"
                                     class="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary accent-primary cursor-pointer"
-                                    checked />
+                                    :checked="item.selected !== false" @change="toggleItemSelection(item.name)" />
                             </div>
 
                             <!-- Product Image -->
@@ -40,8 +40,8 @@
                             <!-- Product Details -->
                             <div class="flex-grow">
                                 <h3 class="text-primary font-semibold text-lg leading-tight mb-2">{{ item.name }}</h3>
-                                <!-- Price Placeholder if needed, currently not in state -->
-                                <p class="text-primary/70 text-sm mb-4">High Quality Furniture from KA Furniture</p>
+                                <p class="text-primary/70 text-sm mb-4">{{ item.quantity }} x {{ formatPrice(item.price)
+                                    }}</p>
                             </div>
 
                             <!-- Quantity and Delete -->
@@ -85,22 +85,35 @@
                 <!-- Summary (Ringkasan Belanja) -->
                 <div v-if="cartItems.length > 0" class="w-full lg:w-96 flex-shrink-0">
                     <div class="bg-white p-6 rounded-2xl shadow-sm border border-primary/5 sticky top-28">
-                        <h2 class="text-lg font-bold text-primary mb-6">Shopping Summary</h2>
+                        <h2 class="text-lg font-bold text-primary mb-6">Ringkasan belanja</h2>
 
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-primary/80">Total Items</span>
-                            <span class="font-medium text-primary">{{ cartTotalItems }}</span>
+                            <span class="text-primary/80">Total</span>
+                            <span class="font-bold text-primary text-xl">{{ formatPrice(cartTotalPrice) }}</span>
                         </div>
 
                         <div class="border-t border-gray-100 my-4"></div>
 
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="font-bold text-primary text-lg">Total Estimasi</span>
-                            <span class="font-bold text-primary text-lg">-</span>
-                        </div>
+                        <button
+                            class="w-full border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:bg-gray-50 transition-colors mb-6 group">
+                            <div
+                                class="flex items-center gap-3 text-primary/60 group-hover:text-primary transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+                                </svg>
+                                <span class="font-medium text-sm">There are no promotions yet</span>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor"
+                                class="w-4 h-4 text-primary/40 group-hover:text-primary/70 transition-colors">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
 
                         <button
-                            class="w-full bg-primary text-white py-4 rounded-full font-semibold text-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
+                            class="w-full bg-primary text-white py-4 rounded-xl font-semibold text-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
                             Buy Now ({{ cartTotalItems }})
                         </button>
                     </div>
@@ -113,5 +126,20 @@
 <script setup>
 import { useCart } from '~/composables/useCart'
 
-const { cartItems, removeFromCart, updateQuantity, cartTotalItems } = useCart()
+const { cartItems, removeFromCart, updateQuantity, cartTotalItems, cartTotalPrice, toggleItemSelection, toggleSelectAll } = useCart()
+
+const isAllSelected = computed({
+    get: () => cartItems.value.length > 0 && cartItems.value.every(item => item.selected !== false),
+    set: (val) => toggleSelectAll(val)
+})
+
+const formatPrice = (price) => {
+    if (!price) return '0'
+    return new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+    }).format(price)
+}
 </script>

@@ -4,6 +4,8 @@ export interface CartItem {
   name: string
   image: string
   quantity: number
+  price: number
+  selected?: boolean
 }
 
 interface CartAnimation {
@@ -53,14 +55,14 @@ export const useCart = () => {
     }, 800)
   }
 
-  const addToCart = (product: { name: string; image: string }, event?: MouseEvent) => {
+  const addToCart = (product: { name: string; image: string; price: number }, event?: MouseEvent) => {
     if (event) triggerAnimation(event)
     
     const existingItem = cartItems.value.find(item => item.name === product.name)
     if (existingItem) {
       existingItem.quantity += 1
     } else {
-      cartItems.value.push({ ...product, quantity: 1 })
+      cartItems.value.push({ ...product, quantity: 1, selected: true })
     }
   }
 
@@ -82,8 +84,29 @@ export const useCart = () => {
     isCartOpen.value = !isCartOpen.value
   }
 
+  const toggleItemSelection = (productName: string) => {
+    const item = cartItems.value.find(item => item.name === productName)
+    if (item) {
+      item.selected = item.selected === false ? true : false
+    }
+  }
+
+  const toggleSelectAll = (select: boolean) => {
+    cartItems.value.forEach(item => {
+      item.selected = select
+    })
+  }
+
   const cartTotalItems = computed(() => {
-    return cartItems.value.reduce((total, item) => total + item.quantity, 0)
+    return cartItems.value
+      .filter(item => item.selected !== false)
+      .reduce((total, item) => total + item.quantity, 0)
+  })
+
+  const cartTotalPrice = computed(() => {
+    return cartItems.value
+      .filter(item => item.selected !== false)
+      .reduce((total, item) => total + (item.price * item.quantity), 0)
   })
 
   return {
@@ -94,6 +117,9 @@ export const useCart = () => {
     updateQuantity,
     toggleCart,
     cartTotalItems,
+    cartTotalPrice,
+    toggleItemSelection,
+    toggleSelectAll,
     animations,
     isCartBumping
   }

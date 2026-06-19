@@ -36,7 +36,8 @@
             </div>
             
             <div class="flex-grow">
-              <h3 class="text-primary font-semibold text-sm leading-tight mb-2">{{ item.name }}</h3>
+              <h3 class="text-primary font-semibold text-sm leading-tight mb-1">{{ item.name }}</h3>
+              <p class="text-primary/70 text-xs mb-3">{{ item.quantity }} x {{ formatPrice(item.price) }}</p>
               
               <div class="flex items-center gap-3">
                 <button @click="updateQuantity(item.name, -1)" class="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors">
@@ -65,8 +66,8 @@
       <!-- Footer -->
       <div v-if="cartItems.length > 0" class="p-6 border-t border-primary/10 bg-secondary">
         <div class="flex items-center justify-between mb-6">
-          <span class="text-primary font-medium">Total Items</span>
-          <span class="text-primary font-semibold text-lg">{{ cartTotalItems }}</span>
+          <span class="text-primary font-medium">Total</span>
+          <span class="text-primary font-semibold text-lg">{{ formatPrice(cartTotalPrice) }}</span>
         </div>
         <button class="w-full bg-primary text-white py-4 rounded-full font-semibold text-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
           Checkout
@@ -82,5 +83,15 @@
 <script setup>
 import { useCart } from '~/composables/useCart'
 
-const { cartItems, isCartOpen, removeFromCart, updateQuantity, cartTotalItems } = useCart()
+const { cartItems, isCartOpen, removeFromCart, updateQuantity, cartTotalItems, cartTotalPrice } = useCart()
+
+const formatPrice = (price) => {
+  if (!price) return '0'
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(price)
+}
 </script>
