@@ -21,31 +21,34 @@
                         </NuxtLink>
                     </div>
 
-                    <div v-else class="flex flex-col gap-6">
+                    <div v-else class="flex flex-col gap-4 sm:gap-6">
                         <div v-for="item in cartItems" :key="item.name"
-                            class="flex gap-6 items-center bg-white p-6 rounded-2xl shadow-sm border border-primary/5">
-                            <!-- Checkbox (Placeholder) -->
-                            <div class="flex-shrink-0">
-                                <input type="checkbox"
-                                    class="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary accent-primary cursor-pointer"
-                                    :checked="item.selected !== false" @change="toggleItemSelection(item.name)" />
-                            </div>
+                            class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-primary/5">
+                            
+                            <div class="flex items-center gap-3 sm:gap-6 w-full sm:w-auto flex-grow">
+                                <!-- Checkbox (Placeholder) -->
+                                <div class="flex-shrink-0">
+                                    <input type="checkbox"
+                                        class="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary accent-primary cursor-pointer"
+                                        :checked="item.selected !== false" @change="toggleItemSelection(item.name)" />
+                                </div>
 
-                            <!-- Product Image -->
-                            <div
-                                class="w-24 h-24 bg-primary/5 rounded-xl flex items-center justify-center p-3 flex-shrink-0">
-                                <img :src="item.image" :alt="item.name" class="w-full h-full object-contain" />
-                            </div>
+                                <!-- Product Image -->
+                                <div
+                                    class="w-20 h-20 sm:w-24 sm:h-24 bg-primary/5 rounded-xl flex items-center justify-center p-2 sm:p-3 flex-shrink-0">
+                                    <img :src="item.image" :alt="item.name" class="w-full h-full object-contain" />
+                                </div>
 
-                            <!-- Product Details -->
-                            <div class="flex-grow">
-                                <h3 class="text-primary font-semibold text-lg leading-tight mb-2">{{ item.name }}</h3>
-                                <p class="text-primary/70 text-sm mb-4">{{ item.quantity }} x {{ formatPrice(item.price)
+                                <!-- Product Details -->
+                                <div class="flex-grow">
+                                    <h3 class="text-primary font-semibold text-base sm:text-lg leading-tight mb-1 sm:mb-2 line-clamp-2">{{ item.name }}</h3>
+                                    <p class="text-primary/70 text-sm">{{ item.quantity }} x {{ formatPrice(item.price)
                                     }}</p>
+                                </div>
                             </div>
 
                             <!-- Quantity and Delete -->
-                            <div class="flex flex-col items-end gap-4">
+                            <div class="w-full sm:w-auto flex justify-end items-center sm:block pt-3 sm:pt-0 mt-1 sm:mt-0 border-t border-gray-100 sm:border-none">
                                 <div class="flex items-center gap-4">
                                     <button @click="removeFromCart(item.name)"
                                         class="text-red-400 hover:text-red-500 transition-colors p-2 flex items-center gap-1"
@@ -66,7 +69,7 @@
                                             </svg>
                                         </button>
                                         <span class="text-primary font-medium text-sm w-6 text-center">{{ item.quantity
-                                        }}</span>
+                                            }}</span>
                                         <button @click="updateQuantity(item.name, 1)"
                                             class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -85,7 +88,7 @@
                 <!-- Summary (Ringkasan Belanja) -->
                 <div v-if="cartItems.length > 0" class="w-full lg:w-96 flex-shrink-0">
                     <div class="bg-white p-6 rounded-2xl shadow-sm border border-primary/5 sticky top-28">
-                        <h2 class="text-lg font-bold text-primary mb-6">Ringkasan belanja</h2>
+                        <h2 class="text-lg font-bold text-primary mb-6">Shopping summary</h2>
 
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-primary/80">Total</span>
