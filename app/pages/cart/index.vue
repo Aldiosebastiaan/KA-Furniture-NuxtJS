@@ -108,7 +108,7 @@
                                         class="text-primary font-semibold text-base sm:text-lg leading-tight mb-1 sm:mb-2 line-clamp-2">
                                         {{ item.name }}</h3>
                                     <p class="text-primary/70 text-sm">{{ item.quantity }} x {{ formatPrice(item.price)
-                                    }}</p>
+                                        }}</p>
                                 </div>
                             </div>
 
@@ -135,7 +135,7 @@
                                             </svg>
                                         </button>
                                         <span class="text-primary font-medium text-sm w-6 text-center">{{ item.quantity
-                                            }}</span>
+                                        }}</span>
                                         <button @click="updateQuantity(item.name, 1)"
                                             class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -164,7 +164,7 @@
                                 <!-- Info -->
                                 <div class="p-4 flex flex-col flex-grow">
                                     <h3 class="text-sm text-primary/80 line-clamp-2 min-h-[40px] mb-2">{{ product.name
-                                        }}</h3>
+                                    }}</h3>
                                     <p class="text-base font-bold text-primary mb-1">{{ formatPrice(product.price) }}
                                     </p>
 
@@ -204,7 +204,7 @@
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-primary/80">Total</span>
                             <span class="font-bold text-primary text-xl">{{ formatPrice(filteredCartTotalPrice)
-                                }}</span>
+                            }}</span>
                         </div>
 
                         <div class="border-t border-gray-100 my-4"></div>
@@ -214,7 +214,7 @@
                             <div
                                 class="flex items-center gap-3 text-primary/60 group-hover:text-primary transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    stroke-width="1.5" stroke="primary" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
                                 </svg>
