@@ -39,7 +39,8 @@
           </button>
           <div class="relative group">
             <NuxtLink to="/cart" id="cart-icon"
-              :class="['relative flex text-primary p-2 rounded-full hover:bg-primary/10 transition-all duration-300', { 'scale-125 text-accent': isCartBumping }]" title="Cart">
+              :class="['relative flex text-primary p-2 rounded-full hover:bg-primary/10 transition-all duration-300', { 'scale-125 text-accent': isCartBumping }]"
+              title="Cart">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -70,7 +71,7 @@
                   </div>
                   <div class="flex-grow min-w-0 flex flex-col justify-center">
                     <h4 class="text-sm font-semibold text-primary truncate">{{ item.name }}</h4>
-                    <p class="text-xs text-primary/70 mt-1">{{ item.quantity }} Barang</p>
+                    <p class="text-xs text-primary/70 mt-1">{{ item.quantity }} x {{ formatPrice(item.price) }}</p>
                   </div>
                 </div>
               </div>
@@ -168,5 +169,14 @@ import { useCart } from '~/composables/useCart'
 
 const { isLoggedIn, user, logout } = useAuth()
 const { cartItems, cartTotalItems, isCartBumping } = useCart()
+const formatPrice = (price) => {
+  if (!price) return '0'
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(price)
+}
 const isMenuOpen = ref(false)
 </script>

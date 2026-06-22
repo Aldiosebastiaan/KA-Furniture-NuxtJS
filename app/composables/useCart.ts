@@ -99,8 +99,17 @@ export const useCart = () => {
 
   const cartTotalItems = computed(() => {
     return cartItems.value
+      .reduce((total, item) => total + item.quantity, 0)
+  })
+
+  const selectedCartTotalItems = computed(() => {
+    return cartItems.value
       .filter(item => item.selected !== false)
       .reduce((total, item) => total + item.quantity, 0)
+  })
+
+  const checkedCartItemsCount = computed(() => {
+    return cartItems.value.filter(item => item.selected !== false).length
   })
 
   const cartTotalPrice = computed(() => {
@@ -117,6 +126,8 @@ export const useCart = () => {
     updateQuantity,
     toggleCart,
     cartTotalItems,
+    selectedCartTotalItems,
+    checkedCartItemsCount,
     cartTotalPrice,
     toggleItemSelection,
     toggleSelectAll,
