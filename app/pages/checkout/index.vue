@@ -135,9 +135,7 @@
                         <div class="flex flex-col gap-4">
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-6 bg-blue-100 rounded text-blue-800 text-[10px] font-bold flex items-center justify-center">
-                                        BCA</div>
+                                    <img src="../../components/ui/icons/bca-va.png" alt="BCA" class="h-6 w-20 object-contain object-left" />
                                     <span class="text-sm font-medium text-primary">BCA Virtual Account</span>
                                 </div>
                                 <input type="radio" name="payment" value="bca"
@@ -146,9 +144,7 @@
                             </label>
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-6 bg-yellow-100 rounded text-yellow-600 text-[10px] font-bold flex items-center justify-center">
-                                        MANDIRI</div>
+                                    <img src="../../components/ui/icons/mandiri-va.png" alt="Mandiri" class="h-6 w-20 object-contain object-left" />
                                     <span class="text-sm font-medium text-primary">Mandiri Virtual Account</span>
                                 </div>
                                 <input type="radio" name="payment" value="mandiri"
@@ -156,9 +152,7 @@
                             </label>
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-6 bg-blue-50 rounded text-blue-600 text-[10px] font-bold flex items-center justify-center">
-                                        BRI</div>
+                                    <img src="../../components/ui/icons/bri-va.jpg" alt="BRI" class="h-6 w-20 object-contain object-left" />
                                     <span class="text-sm font-medium text-primary">BRI Virtual Account</span>
                                 </div>
                                 <input type="radio" name="payment" value="bri"
@@ -166,9 +160,7 @@
                             </label>
                             <label class="flex items-center justify-between cursor-pointer group">
                                 <div class="flex items-center gap-3">
-                                    <div
-                                        class="w-10 h-6 bg-red-100 rounded text-red-600 text-[10px] font-bold flex items-center justify-center">
-                                        ALFA</div>
+                                    <img src="../../components/ui/icons/alfamart.png" alt="Alfamart" class="h-6 w-20 object-contain object-left" />
                                     <span class="text-sm font-medium text-primary">Alfamart / Alfamidi</span>
                                 </div>
                                 <input type="radio" name="payment" value="alfa"
