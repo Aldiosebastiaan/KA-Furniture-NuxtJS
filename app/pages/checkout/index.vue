@@ -27,8 +27,7 @@
                                     kanan),...
                                 </p>
                             </div>
-                            <button
-                                @click="isAddressModalOpen = true"
+                            <button @click="isAddressModalOpen = true"
                                 class="flex-shrink-0 px-4 py-1.5 border border-gray-300 rounded-lg text-sm font-medium text-primary hover:bg-gray-50 transition-colors">
                                 Ganti
                             </button>
@@ -50,7 +49,7 @@
                                 </div>
                                 <div class="flex-grow flex flex-col justify-between">
                                     <h3 class="text-primary font-medium text-sm sm:text-base leading-tight">{{ item.name
-                                    }}</h3>
+                                        }}</h3>
                                     <div class="flex justify-between items-center mt-2">
                                         <span class="text-primary font-bold">{{ item.quantity }} x {{
                                             formatPrice(item.price) }}</span>
@@ -133,34 +132,53 @@
                         </div>
 
                         <div class="flex flex-col gap-4">
+                            <!-- BCA -->
                             <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <img src="../../components/ui/icons/bca-va.png" alt="BCA" class="h-6 w-20 object-contain object-left" />
+                                <div class="flex items-center gap-4">
+                                    <div class="w-20 shrink-0 flex items-center justify-start">
+                                        <img src="../../components/ui/icons/bca-va.png" alt="BCA"
+                                            class="h-6 object-contain object-left" />
+                                    </div>
                                     <span class="text-sm font-medium text-primary">BCA Virtual Account</span>
                                 </div>
                                 <input type="radio" name="payment" value="bca"
                                     class="w-5 h-5 text-primary focus:ring-primary border-gray-300 accent-primary"
                                     checked />
                             </label>
+
+                            <!-- Mandiri -->
                             <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <img src="../../components/ui/icons/mandiri-va.png" alt="Mandiri" class="h-6 w-20 object-contain object-left" />
+                                <div class="flex items-center gap-4">
+                                    <div class="w-20 shrink-0 flex items-center justify-start overflow-visible">
+                                        <img src="../../components/ui/icons/mandiri-va.png" alt="Mandiri"
+                                            class="h-8 object-contain object-left -ml-1.5" />
+                                    </div>
                                     <span class="text-sm font-medium text-primary">Mandiri Virtual Account</span>
                                 </div>
                                 <input type="radio" name="payment" value="mandiri"
                                     class="w-5 h-5 text-primary focus:ring-primary border-gray-300 accent-primary" />
                             </label>
+
+                            <!-- BRI -->
                             <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <img src="../../components/ui/icons/bri-va.jpg" alt="BRI" class="h-6 w-20 object-contain object-left" />
+                                <div class="flex items-center gap-4">
+                                    <div class="w-20 shrink-0 flex items-center justify-start">
+                                        <img src="../../components/ui/icons/bri-va.jpg" alt="BRI"
+                                            class="h-10 object-contain object-left" />
+                                    </div>
                                     <span class="text-sm font-medium text-primary">BRI Virtual Account</span>
                                 </div>
                                 <input type="radio" name="payment" value="bri"
                                     class="w-5 h-5 text-primary focus:ring-primary border-gray-300 accent-primary" />
                             </label>
+
+                            <!-- Alfamart -->
                             <label class="flex items-center justify-between cursor-pointer group">
-                                <div class="flex items-center gap-3">
-                                    <img src="../../components/ui/icons/alfamart.png" alt="Alfamart" class="h-6 w-20 object-contain object-left" />
+                                <div class="flex items-center gap-4">
+                                    <div class="w-20 shrink-0 flex items-center justify-start">
+                                        <img src="../../components/ui/icons/alfamart.png" alt="Alfamart"
+                                            class="h-6 object-contain object-left" />
+                                    </div>
                                     <span class="text-sm font-medium text-primary">Alfamart / Alfamidi</span>
                                 </div>
                                 <input type="radio" name="payment" value="alfa"
@@ -201,7 +219,7 @@
                         <div class="flex items-center justify-between mb-6">
                             <span class="font-bold text-primary">Total Tagihan</span>
                             <span class="font-bold text-primary text-xl">{{ formatPrice(cartTotalPrice + 30000)
-                            }}</span>
+                                }}</span>
                         </div>
 
                         <button @click="handlePayment"
@@ -239,20 +257,19 @@
                 </NuxtLink>
             </div>
             <!-- Address Modal -->
-            <Transition
-                enter-active-class="transition duration-200 ease-out"
-                enter-from-class="opacity-0"
-                enter-to-class="opacity-100"
-                leave-active-class="transition duration-150 ease-in"
-                leave-from-class="opacity-100"
-                leave-to-class="opacity-0"
-            >
-                <div v-if="isAddressModalOpen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-                    <div class="bg-white w-full max-w-lg rounded-2xl shadow-xl overflow-hidden transform transition-all" @click.stop>
+            <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0"
+                enter-to-class="opacity-100" leave-active-class="transition duration-150 ease-in"
+                leave-from-class="opacity-100" leave-to-class="opacity-0">
+                <div v-if="isAddressModalOpen"
+                    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+                    <div class="bg-white w-full max-w-lg rounded-2xl shadow-xl overflow-hidden transform transition-all"
+                        @click.stop>
                         <div class="p-6 border-b border-gray-100 flex justify-between items-center">
                             <h3 class="text-lg font-bold text-primary">Pilih Alamat Pengiriman</h3>
-                            <button @click="isAddressModalOpen = false" class="text-gray-400 hover:text-gray-600 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <button @click="isAddressModalOpen = false"
+                                class="text-gray-400 hover:text-gray-600 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
@@ -262,35 +279,48 @@
                             <div class="border-2 border-primary rounded-xl p-4 cursor-pointer bg-primary/5">
                                 <div class="flex items-start justify-between mb-2">
                                     <div class="flex items-center gap-2">
-                                        <span class="text-xs font-bold bg-primary text-white px-2 py-1 rounded">Utama</span>
+                                        <span
+                                            class="text-xs font-bold bg-primary text-white px-2 py-1 rounded">Utama</span>
                                         <span class="font-bold text-primary">Rumah • Aldio Sebastian</span>
                                     </div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-primary">
-                                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-6 h-6 text-primary">
+                                        <path fill-rule="evenodd"
+                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                            clip-rule="evenodd" />
                                     </svg>
                                 </div>
                                 <p class="text-sm text-primary/80 font-medium">081234567890</p>
-                                <p class="text-sm text-primary/80 mt-1 leading-relaxed">Perumahan Taman Batursari Indah, RT 05/RW 36 blok J2 No 123, Kecamatan Mranggen, Kabupaten Demak, Provinsi Jawa Tengah, 59567</p>
-                                <button class="mt-3 text-sm font-semibold text-primary hover:text-primary/70">Ubah Alamat</button>
+                                <p class="text-sm text-primary/80 mt-1 leading-relaxed">Perumahan Taman Batursari Indah,
+                                    RT 05/RW 36 blok J2 No 123, Kecamatan Mranggen, Kabupaten Demak, Provinsi Jawa
+                                    Tengah, 59567</p>
+                                <button class="mt-3 text-sm font-semibold text-primary hover:text-primary/70">Ubah
+                                    Alamat</button>
                             </div>
-                            
+
                             <!-- Address Item 2 -->
-                            <div class="border border-gray-200 rounded-xl p-4 cursor-pointer hover:border-primary/50 transition-colors group">
+                            <div
+                                class="border border-gray-200 rounded-xl p-4 cursor-pointer hover:border-primary/50 transition-colors group">
                                 <div class="flex items-start justify-between mb-2">
                                     <div class="flex items-center gap-2">
-                                        <span class="text-xs font-medium border border-gray-300 text-gray-500 px-2 py-1 rounded">Kantor</span>
+                                        <span
+                                            class="text-xs font-medium border border-gray-300 text-gray-500 px-2 py-1 rounded">Kantor</span>
                                         <span class="font-bold text-primary">Kantor • Aldio Sebastian</span>
                                     </div>
-                                    <button class="opacity-0 group-hover:opacity-100 text-xs font-medium bg-primary text-white px-3 py-1 rounded-full transition-opacity">Pilih</button>
+                                    <button
+                                        class="opacity-0 group-hover:opacity-100 text-xs font-medium bg-primary text-white px-3 py-1 rounded-full transition-opacity">Pilih</button>
                                 </div>
                                 <p class="text-sm text-primary/80 font-medium">081234567890</p>
-                                <p class="text-sm text-primary/80 mt-1 leading-relaxed">Gedung Sudirman, Jl. Jend. Sudirman No. 1, Jakarta Pusat, DKI Jakarta, 10220</p>
-                                <button class="mt-3 text-sm font-semibold text-primary hover:text-primary/70">Ubah Alamat</button>
+                                <p class="text-sm text-primary/80 mt-1 leading-relaxed">Gedung Sudirman, Jl. Jend.
+                                    Sudirman No. 1, Jakarta Pusat, DKI Jakarta, 10220</p>
+                                <button class="mt-3 text-sm font-semibold text-primary hover:text-primary/70">Ubah
+                                    Alamat</button>
                             </div>
 
                         </div>
                         <div class="p-6 border-t border-gray-100">
-                            <button class="w-full py-3 border border-primary text-primary font-bold rounded-xl hover:bg-primary/5 transition-colors">
+                            <button
+                                class="w-full py-3 border border-primary text-primary font-bold rounded-xl hover:bg-primary/5 transition-colors">
                                 Tambah Alamat Baru
                             </button>
                         </div>
