@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-[#FDFBF7]/80 py-12 px-6 md:px-16 lg:px-24 font-montserrat">
+    <div class="min-h-screen bg-[#FDFBF7]/80 py-12 px-6 md:px-16 lg:px-24 font-montserrat relative">
         <div class="max-w-6xl mx-auto">
             <h1 class="text-3xl font-bold text-primary mb-8">Shopping Cart</h1>
 
@@ -23,63 +23,9 @@
 
                     <div v-else class="flex flex-col gap-4 sm:gap-6">
                         <!-- Toolbar: Pilih Semua, Search, Category Filter -->
-                        <div
-                            class="bg-white p-4 sm:px-6 rounded-2xl shadow-sm border border-primary/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <div class="flex items-center gap-3 w-full sm:w-auto">
-                                <input type="checkbox" id="selectAll"
-                                    class="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary accent-primary cursor-pointer"
-                                    v-model="isAllFilteredSelected" />
-                                <label for="selectAll" class="font-medium text-primary cursor-pointer select-none">
-                                    Pilih Semua ({{ filteredCheckedCartItemsCount }})
-                                </label>
-                            </div>
-
-                            <div class="flex items-center gap-3 w-full sm:w-auto flex-grow justify-end">
-                                <div class="relative w-full sm:w-48 lg:w-64">
-                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor" class="w-4 h-4 text-gray-400">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                                        </svg>
-                                    </span>
-                                    <input type="text" placeholder="Search Items" v-model="searchQuery"
-                                        class="w-full border border-gray-200 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/80 focus:border-primary transition-colors text-primary" />
-                                </div>
-                                <div class="relative w-full sm:w-48 lg:w-48">
-                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-gray-400">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                                        </svg>
-                                    </span>
-                                    <button @click="isCategoryOpen = !isCategoryOpen"
-                                        class="w-full border border-gray-200 rounded-lg pl-10 pr-10 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/80 focus:border-primary transition-colors text-primary bg-white flex justify-between items-center text-left">
-                                        <span class="truncate">{{ selectedCategory }}</span>
-                                        <span
-                                            class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="2" stroke="currentColor"
-                                                class="w-4 h-4 text-gray-400 transition-transform"
-                                                :class="{ 'rotate-180': isCategoryOpen }">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                            </svg>
-                                        </span>
-                                    </button>
-                                    <div v-if="isCategoryOpen"
-                                        class="absolute z-[60] w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-auto py-1">
-                                        <div v-for="cat in categories" :key="cat"
-                                            @click="selectedCategory = cat; isCategoryOpen = false"
-                                            class="px-4 py-2 text-sm text-primary hover:bg-primary/5 cursor-pointer transition-colors"
-                                            :class="{ 'font-semibold bg-primary/5': selectedCategory === cat }">
-                                            {{ cat }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <UiToolbar v-model:isAllSelected="isAllFilteredSelected" v-model:searchQuery="searchQuery"
+                            v-model:selectedCategory="selectedCategory" :selectedCount="filteredCheckedCartItemsCount"
+                            :categories="categories" />
 
                         <div v-if="filteredCartItems.length === 0"
                             class="py-12 text-center text-primary/50 border border-dashed border-primary/20 rounded-2xl">
@@ -89,34 +35,31 @@
                             class="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start sm:items-center bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-primary/5">
 
                             <div class="flex items-center gap-3 sm:gap-6 w-full sm:w-auto flex-grow">
-                                <!-- Checkbox (Placeholder) -->
                                 <div class="flex-shrink-0">
                                     <input type="checkbox"
                                         class="w-5 h-5 rounded border-gray-300 text-primary focus:ring-primary accent-primary cursor-pointer"
                                         :checked="item.selected !== false" @change="toggleItemSelection(item.name)" />
                                 </div>
 
-                                <!-- Product Image -->
                                 <div
                                     class="w-20 h-20 sm:w-24 sm:h-24 bg-primary/5 rounded-xl flex items-center justify-center p-2 sm:p-3 flex-shrink-0">
                                     <img :src="item.image" :alt="item.name" class="w-full h-full object-contain" />
                                 </div>
 
-                                <!-- Product Details -->
                                 <div class="flex-grow">
                                     <h3
                                         class="text-primary font-semibold text-base sm:text-lg leading-tight mb-1 sm:mb-2 line-clamp-2">
                                         {{ item.name }}</h3>
                                     <p class="text-primary/70 text-sm">{{ item.quantity }} x {{ formatPrice(item.price)
-                                        }}</p>
+                                    }}</p>
                                 </div>
                             </div>
 
-                            <!-- Quantity and Delete -->
                             <div
                                 class="w-full sm:w-auto flex justify-end items-center sm:block pt-3 sm:pt-0 mt-1 sm:mt-0 border-t border-gray-100 sm:border-none">
                                 <div class="flex items-center gap-4">
-                                    <button @click="removeFromCart(item.name)"
+                                    <!-- Tombol Hapus memicu Modal -->
+                                    <button @click="openDeleteModal(item)"
                                         class="text-red-400 hover:text-red-500 transition-colors p-2 flex items-center gap-1"
                                         title="Delete">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -135,7 +78,7 @@
                                             </svg>
                                         </button>
                                         <span class="text-primary font-medium text-sm w-6 text-center">{{ item.quantity
-                                        }}</span>
+                                            }}</span>
                                         <button @click="updateQuantity(item.name, 1)"
                                             class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -156,15 +99,13 @@
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             <div v-for="product in recommendations" :key="product.id"
                                 class="bg-white rounded-xl border border-primary/10 overflow-hidden flex flex-col group hover:shadow-md transition-shadow cursor-pointer">
-                                <!-- Image -->
                                 <div class="h-40 bg-gray-50 flex items-center justify-center p-4 relative">
                                     <img :src="product.image" :alt="product.name"
                                         class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
                                 </div>
-                                <!-- Info -->
                                 <div class="p-4 flex flex-col flex-grow">
                                     <h3 class="text-sm text-primary/80 line-clamp-2 min-h-[40px] mb-2">{{ product.name
-                                    }}</h3>
+                                        }}</h3>
                                     <p class="text-base font-bold text-primary mb-1">{{ formatPrice(product.price) }}
                                     </p>
 
@@ -204,7 +145,7 @@
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-primary/80">Total</span>
                             <span class="font-bold text-primary text-xl">{{ formatPrice(filteredCartTotalPrice)
-                            }}</span>
+                                }}</span>
                         </div>
 
                         <div class="border-t border-gray-100 my-4"></div>
@@ -246,8 +187,13 @@
                 </div>
             </div>
         </div>
-        <!-- Promo Modal -->
-        <CartPromoModal v-model:isOpen="isPromoModalOpen" />
+        <<<<<<< HEAD <!-- Pop-Up Modal Konfirmasi Delete -->
+            <UiDeleteConfirmModal :isOpen="isDeleteModalOpen" :itemName="itemToDelete?.name" @close="closeDeleteModal"
+                @confirm="confirmDelete" />
+            =======
+            <!-- Promo Modal -->
+            <CartPromoModal v-model:isOpen="isPromoModalOpen" />
+            >>>>>>> develop
     </div>
 </template>
 
@@ -257,7 +203,26 @@ import { ref, computed } from 'vue'
 
 const { cartItems, removeFromCart, updateQuantity, selectedCartTotalItems, checkedCartItemsCount, cartTotalPrice, toggleItemSelection, toggleSelectAll, addToCart } = useCart()
 
-const isPromoModalOpen = ref(false)
+// State & Fungsi untuk Modal Delete
+const isDeleteModalOpen = ref(false)
+const itemToDelete = ref(null)
+
+const openDeleteModal = (item) => {
+    itemToDelete.value = item
+    isDeleteModalOpen.value = true
+}
+
+const closeDeleteModal = () => {
+    isDeleteModalOpen.value = false
+    itemToDelete.value = null
+}
+
+const confirmDelete = () => {
+    if (itemToDelete.value) {
+        removeFromCart(itemToDelete.value.name)
+        closeDeleteModal()
+    }
+}
 
 const recommendations = [
     { id: 3, name: 'Cocoon Lounge Chair', price: 5800000, originalPrice: 6500000, discount: '11%', rating: 4.9, sold: 210, image: '/images/chair/cocoon-lounge-chair.png' },
@@ -273,10 +238,8 @@ const isAllSelected = computed({
     set: (val) => toggleSelectAll(val)
 })
 
-
 const categories = ['All Categories', 'Chair', 'Bed', 'Kitchen Set', 'Shelves', 'Nightstand', 'Table']
 const selectedCategory = ref('All Categories')
-const isCategoryOpen = ref(false)
 const searchQuery = ref('')
 
 const filteredCartItems = computed(() => {
