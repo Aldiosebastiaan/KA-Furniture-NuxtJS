@@ -209,20 +209,31 @@
 
                         <div class="border-t border-gray-100 my-4"></div>
 
-                        <button
-                            class="w-full border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:bg-gray-50 transition-colors mb-6 group">
-                            <div
-                                class="flex items-center gap-3 text-primary/60 group-hover:text-primary transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="primary" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+                        <button @click="isPromoModalOpen = true"
+                            class="w-full border border-[#2CD3B5] bg-[#F2FCF9] rounded-xl p-4 flex items-center justify-between hover:bg-[#E6FBF7] transition-colors mb-6 group">
+                            <div class="flex items-center gap-4">
+                                <svg width="36" height="26" viewBox="0 0 36 26" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+                                    <path
+                                        d="M3 4C3 2.34315 4.34315 1 6 1H30C31.6569 1 33 2.34315 33 4V7C30.2386 7 28 9.23858 28 12C28 14.7614 30.2386 17 33 17V21C33 22.6569 31.6569 24 30 24H6C4.34315 24 3 22.6569 3 21V17C5.76142 17 8 14.7614 8 12C8 9.23858 5.76142 7 3 7V4Z"
+                                        fill="#FDE047" />
+                                    <path
+                                        d="M3 21C3 22.6569 4.34315 24 6 24H30C31.6569 24 33 22.6569 33 21V21C33 22.6569 31.6569 24 30 24H6C4.34315 24 3 22.6569 3 21V21Z"
+                                        fill="#EAB308" />
+                                    <path
+                                        d="M3 7C5.76142 7 8 9.23858 8 12C8 14.7614 5.76142 17 3 17V21C3 22.6569 4.34315 24 6 24H30C31.6569 24 33 22.6569 33 21V17C30.2386 17 28 14.7614 28 12C28 9.23858 30.2386 7 33 7V4C33 2.34315 31.6569 1 30 1H6C4.34315 1 3 2.34315 3 4V7Z"
+                                        stroke="#F59E0B" stroke-width="2" />
+                                    <line x1="25" y1="4" x2="25" y2="21" stroke="#F59E0B" stroke-width="1.5"
+                                        stroke-dasharray="2 2" />
+                                    <path
+                                        d="M11 9L18 16M13.5 14.5C13.5 15.3284 12.8284 16 12 16C11.1716 16 10.5 15.3284 10.5 14.5C10.5 13.6716 11.1716 13 12 13C12.8284 13 13.5 13.6716 13.5 14.5ZM17.5 10.5C17.5 11.3284 16.8284 12 16 12C15.1716 12 14.5 11.3284 14.5 10.5C14.5 9.67157 15.1716 9 16 9C16.8284 9 17.5 9.67157 17.5 10.5Z"
+                                        stroke="#F59E0B" stroke-width="2" stroke-linecap="round" />
                                 </svg>
-                                <span class="font-medium text-sm">There are no promotions yet</span>
+                                <span class="text-[15px] font-medium text-gray-800 text-left leading-snug">Pilih
+                                    salah satu produk sebelum pakai promo, yaa!</span>
                             </div>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                                stroke="currentColor"
-                                class="w-4 h-4 text-primary/40 group-hover:text-primary/70 transition-colors">
+                                stroke="currentColor" class="w-5 h-5 text-gray-400 flex-shrink-0 ml-2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                             </svg>
                         </button>
@@ -235,13 +246,18 @@
                 </div>
             </div>
         </div>
+        <!-- Promo Modal -->
+        <CartPromoModal v-model:isOpen="isPromoModalOpen" />
     </div>
 </template>
 
 <script setup>
 import { useCart } from '~/composables/useCart'
+import { ref, computed } from 'vue'
 
 const { cartItems, removeFromCart, updateQuantity, selectedCartTotalItems, checkedCartItemsCount, cartTotalPrice, toggleItemSelection, toggleSelectAll, addToCart } = useCart()
+
+const isPromoModalOpen = ref(false)
 
 const recommendations = [
     { id: 3, name: 'Cocoon Lounge Chair', price: 5800000, originalPrice: 6500000, discount: '11%', rating: 4.9, sold: 210, image: '/images/chair/cocoon-lounge-chair.png' },
