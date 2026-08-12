@@ -51,7 +51,7 @@
                                         class="text-primary font-semibold text-base sm:text-lg leading-tight mb-1 sm:mb-2 line-clamp-2">
                                         {{ item.name }}</h3>
                                     <p class="text-primary/70 text-sm">{{ item.quantity }} x {{ formatPrice(item.price)
-                                    }}</p>
+                                        }}</p>
                                 </div>
                             </div>
 
@@ -78,7 +78,7 @@
                                             </svg>
                                         </button>
                                         <span class="text-primary font-medium text-sm w-6 text-center">{{ item.quantity
-                                            }}</span>
+                                        }}</span>
                                         <button @click="updateQuantity(item.name, 1)"
                                             class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center text-primary hover:bg-primary/20 transition-colors">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -94,47 +94,7 @@
                     </div>
 
                     <!-- Rekomendasi Untukmu -->
-                    <div class="mt-12 mb-8">
-                        <h2 class="text-3xl font-bold text-primary mb-6">Rekomendasi untukmu</h2>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            <div v-for="product in recommendations" :key="product.id"
-                                class="bg-white rounded-xl border border-primary/10 overflow-hidden flex flex-col group hover:shadow-md transition-shadow cursor-pointer">
-                                <div class="h-40 bg-gray-50 flex items-center justify-center p-4 relative">
-                                    <img :src="product.image" :alt="product.name"
-                                        class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
-                                </div>
-                                <div class="p-4 flex flex-col flex-grow">
-                                    <h3 class="text-sm text-primary/80 line-clamp-2 min-h-[40px] mb-2">{{ product.name
-                                        }}</h3>
-                                    <p class="text-base font-bold text-primary mb-1">{{ formatPrice(product.price) }}
-                                    </p>
-
-                                    <div class="flex items-center gap-2 mb-3" v-if="product.originalPrice">
-                                        <span class="text-xs text-primary/40 line-through">{{
-                                            formatPrice(product.originalPrice) }}</span>
-                                        <span
-                                            class="text-[10px] font-bold text-red-500 bg-red-50 px-1.5 py-0.5 rounded">{{
-                                                product.discount }}</span>
-                                    </div>
-                                    <div v-else class="mb-3 h-4"></div>
-
-                                    <div class="flex items-center gap-1.5 text-xs text-primary/50 mb-4">
-                                        <span class="text-yellow-400">⭐</span>
-                                        <span>{{ product.rating }}</span>
-                                        <span>|</span>
-                                        <span>Terjual {{ product.sold }}</span>
-                                    </div>
-
-                                    <div class="mt-auto">
-                                        <button @click.stop="addToCart(product, $event)"
-                                            class="w-full py-1.5 border border-primary text-primary text-sm font-semibold rounded-lg hover:bg-primary/5 transition-colors">
-                                            + Keranjang
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <UiProductRecommendation :products="recommendations" />
                 </div>
 
                 <!-- Summary (Ringkasan Belanja) -->
@@ -145,7 +105,7 @@
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-primary/80">Total</span>
                             <span class="font-bold text-primary text-xl">{{ formatPrice(filteredCartTotalPrice)
-                                }}</span>
+                            }}</span>
                         </div>
 
                         <div class="border-t border-gray-100 my-4"></div>
@@ -187,13 +147,13 @@
                 </div>
             </div>
         </div>
-        <<<<<<< HEAD <!-- Pop-Up Modal Konfirmasi Delete -->
-            <UiDeleteConfirmModal :isOpen="isDeleteModalOpen" :itemName="itemToDelete?.name" @close="closeDeleteModal"
-                @confirm="confirmDelete" />
-            =======
-            <!-- Promo Modal -->
-            <CartPromoModal v-model:isOpen="isPromoModalOpen" />
-            >>>>>>> develop
+
+        <!-- Pop-Up Modal Konfirmasi Delete -->
+        <UiDeleteConfirmModal :isOpen="isDeleteModalOpen" :itemName="itemToDelete?.name" @close="closeDeleteModal"
+            @confirm="confirmDelete" />
+
+        <!-- Promo Modal -->
+        <CartPromoModal v-model:isOpen="isPromoModalOpen" />
     </div>
 </template>
 
