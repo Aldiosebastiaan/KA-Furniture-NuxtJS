@@ -64,7 +64,6 @@ const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'Collection', href: '#collection' },
     { name: 'Showcase', href: '#showcase' },
-    { name: 'Services', href: '#services' },
     { name: 'Shop Now', href: '/shop' },
 ]
 const policies = ['Term & condition', 'Privacy Policy', 'Cookies']

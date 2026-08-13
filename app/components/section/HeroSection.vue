@@ -14,8 +14,12 @@
                 </p>
 
                 <div class="flex items-center gap-4 mt-2">
-                    <UiButton variant="accent" to="/shop">Shop Now</UiButton>
-                    <UiButton variant="outline" to="#collection">Explore Collection</UiButton>
+                    <NuxtLink to="/main/shop">
+                        <UiButton variant="accent">Shop Now</UiButton>
+                    </NuxtLink>
+                    <NuxtLink to="/main/collections">
+                        <UiButton variant="outline">Explore Collection</UiButton>
+                    </NuxtLink>
                 </div>
             </div>
 

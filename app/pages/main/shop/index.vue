@@ -17,7 +17,7 @@
                   {{ slide.title }}
                 </h2>
                 <p class="text-secondary/70 text-sm mt-2 max-w-sm">{{ slide.desc }}</p>
-                <UiButton variant="accent" to="/shop" class="mt-5 w-fit">{{ slide.cta }}</UiButton>
+                <UiButton variant="accent" to="/main/shop" class="mt-5 w-fit">{{ slide.cta }}</UiButton>
               </div>
             </div>
           </TransitionGroup>

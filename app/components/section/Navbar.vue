@@ -11,16 +11,13 @@
         <NuxtLink to="/" class="hover:opacity-75 transition-opacity">Home</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/#collection" class="hover:opacity-75 transition-opacity">Collection</NuxtLink>
+        <NuxtLink to="/main/collections" class="hover:opacity-75 transition-opacity">Collection</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/#showcase" class="hover:opacity-75 transition-opacity">Showcase</NuxtLink>
+        <NuxtLink to="/main/showcase" class="hover:opacity-75 transition-opacity">Showcase</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/#services" class="hover:opacity-75 transition-opacity">Service</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/shop" class="hover:opacity-75 transition-opacity">Shop Now</NuxtLink>
+        <NuxtLink to="/main/shop" class="hover:opacity-75 transition-opacity">Shop Now</NuxtLink>
       </li>
     </ul>
 
@@ -111,19 +108,16 @@
           <NuxtLink to="/" class="hover:opacity-75 transition-opacity" @click="isMenuOpen = false">Home</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/#collection" class="hover:opacity-75 transition-opacity" @click="isMenuOpen = false">Collection
+          <NuxtLink to="/main/collections" class="hover:opacity-75 transition-opacity" @click="isMenuOpen = false">
+            Collection
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/#showcase" class="hover:opacity-75 transition-opacity" @click="isMenuOpen = false">Showcase
+          <NuxtLink to="/main/showcase" class="hover:opacity-75 transition-opacity" @click="isMenuOpen = false">Showcase
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/#services" class="hover:opacity-75 transition-opacity" @click="isMenuOpen = false">Service
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="/shop" class="hover:opacity-75 transition-opacity" @click="isMenuOpen = false">Shop Now
+          <NuxtLink to="/main/shop" class="hover:opacity-75 transition-opacity" @click="isMenuOpen = false">Shop Now
           </NuxtLink>
         </li>
       </ul>
