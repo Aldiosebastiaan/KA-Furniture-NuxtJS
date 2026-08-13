@@ -1,10 +1,10 @@
 <template>
   <div class="min-h-screen bg-secondary font-sans flex flex-col">
-    <Navbar />
+    <SectionNavbar />
     <div class="flex-grow">
       <NuxtPage />
     </div>
-    <FooterSection />
+    <SectionFooterSection />
     <CartModal />
     <CartAnimation />
     <!-- Global loading overlay -->

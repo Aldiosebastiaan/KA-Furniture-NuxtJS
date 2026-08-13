@@ -1,10 +1,10 @@
 <template>
   <div>
-    <HeroSection />
-    <CollectionSection />
-    <ExperienceSection />
-    <ShowcaseSection />
-    <BannerSection />
+    <SectionHeroSection />
+    <SectionCollectionSection />
+    <SectionExperienceSection />
+    <SectionShowcaseSection />
+    <SectionBannerSection />
   </div>
 </template>
 
