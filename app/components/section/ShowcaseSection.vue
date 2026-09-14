@@ -54,7 +54,7 @@
 
             <!-- CTA -->
             <div class="flex justify-center mt-12">
-                <UiButton variant="accent" size="md">
+                <UiButton to="/main/showcase" variant="accent" size="md">
                     Explore Our Showcase
                 </UiButton>
             </div>
